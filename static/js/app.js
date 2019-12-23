@@ -40,8 +40,10 @@ var filters = {};
       // Apply `filter` to the table data to only keep the
       // rows where the `datetime` value matches the filter value
       filteredData = filteredData.filter(row => row.datetime === date);
+      filters [date] = d3.select("#datetime").property("value")
     } else if (city) {
       filteredData = filteredData.filter(row => row.city === city);
+      filters [city] = d3.select("#city").property("value")
     } else if (state) {
       filteredData = filteredData.filter(row => row.state === state);
     } else if (country) {
@@ -53,7 +55,14 @@ var filters = {};
     // @NOTE: If no date was entered, then filteredData will
     // just be the original tableData.
     buildTable(filteredData);
+    //filtertable();
   }
+
+
+  //function filterTable(){
+    //for (var i=0; i<filters.length; i++) 
+    //{buildTable(filters)}
+  //}
   // Attach an event to listen for the form button
   //d3.selectAll("#filter-btn").on("click", handleClick);
   d3.selectAll("#filter-btn").on("click", handleClick);
